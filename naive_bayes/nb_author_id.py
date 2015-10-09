@@ -28,7 +28,7 @@ print 'Test data length:{0}'.format(len(features_test))
 
 print 'Test data:{0}'.format(features_test[0:3])
 
-sys.exit(0)
+
 clf = GaussianNB()
 
 t0 = time()
