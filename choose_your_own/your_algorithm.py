@@ -3,6 +3,7 @@
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
+import traceback
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
@@ -28,7 +29,7 @@ plt.show()
 #################################################################################
 
 
-### your code here!  name your classifier object clf if you want the 
+### your code here!  name your classifier object clf if you want the
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
@@ -42,3 +43,4 @@ try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+    print('Some kind of error. {0}'.format(traceback.format_exc()))
