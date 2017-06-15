@@ -2,17 +2,18 @@
 # vi: set ft=ruby :
 
 VAGRANTFILE_API_VERSION = "2"
+VM_NAME = "udacity-ml"
+MEMORY = 1536
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/precise64"
+  config.vm.box = "packer/ubuntu-16.04.2-server-amd64-docker.box"
   config.vm.provision "shell", path: "vagrant_provision.sh"
-  config.vm.network :forwarded_port, guest: 22, host: 2222, id: 'ssh'
   config.vm.synced_folder ".", "/vagrant"
-  config.vm.hostname = "udacity"
-  config.vm.provider "virtualbox" do |vb|
-     vb.cpus = 2
-     vb.memory = 2048
-     # Use VBoxManage to customize the VM. For example to change memory:
-     #vb.customize ["modifyvm", :id, "--memory", "1536"]
+
+  config.vm.provider "virtualbox" do |vb| 
+     # Use VBoxManage to customize the VM. For example to change name, memory and DNS resolution:
+     vb.name = "#{VM_NAME}"
+     vb.customize ["modifyvm", :id, "--memory", "#{MEMORY}"]
+       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 end

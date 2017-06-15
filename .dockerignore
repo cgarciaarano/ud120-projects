@@ -1,0 +1,6 @@
+# To avoid overhead creating context
+
+# Ignore all
+*
+# except requirements
+!requirements*

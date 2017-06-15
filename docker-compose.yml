@@ -1,0 +1,15 @@
+############################################################
+# Docker Compose for Ansible with a target machine
+# 
+############################################################
+version: "2"
+
+services:
+  python-ml:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cgarciaarano/python-ml:dev
+    volumes:
+      - .:/opt/app
+
